@@ -1,7 +1,5 @@
 from contextlib import asynccontextmanager
 
-from alembic.command import upgrade
-from alembic.config import Config
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,6 +9,7 @@ from backend.routers.conversation import router as conversation_router
 from backend.routers.deployment import router as deployment_router
 from backend.routers.tool import router as tool_router
 from backend.routers.user import router as user_router
+
 
 load_dotenv()
 
@@ -53,6 +52,8 @@ async def health():
     return {"status": "OK"}
 
 
+# from alembic.command import upgrade
+# from alembic.config import Config
 @app.post("/migrate")
 async def apply_migrations():
     """

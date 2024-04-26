@@ -1,5 +1,3 @@
-![](/docs/assets/banner.png)
-
 # Cohere Toolkit
 
 Toolkit is a collection of prebuilt components enabling users to quickly build and deploy RAG applications.
@@ -14,14 +12,6 @@ Toolkit is a collection of prebuilt components enabling users to quickly build a
 - [Try Coral Showcase](https://coral.cohere.com/)
 
 ![](/docs/assets/toolkit.gif)
-
-## Quick start
-
-### Deploying to Azure
-
-You can deploy Toolkit with one click to Microsoft Azure Platform:
-
-[<img src="https://aka.ms/deploytoazurebutton" height="48px">](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcohere-ai%2Fcohere-toolkit%2Fmain%2Fazuredeploy.json)
 
 ### Building and running locally
 
@@ -38,8 +28,6 @@ Follow the instructions to configure the model - either AWS Sagemaker, Azure, or
   
   ### Cohere Platform
 
-- `COHERE_API_KEY`: If your application will interface with Cohere's API, you will need to supply an API key. Not required if using AWS Sagemaker or Azure.
-  Sign up at https://dashboard.cohere.com/ to create an API key.
 - `NEXT_PUBLIC_API_HOSTNAME`: The backend URL which the frontend will communicate with. Defaults to http://localhost:8000
 - `DATABASE_URL`: Your PostgreSQL database connection string for SQLAlchemy, should follow the format `postgresql+psycopg2://USER:PASSWORD@HOST:PORT`.
 
@@ -128,7 +116,6 @@ Looking to deploy the Toolkit to your preferred cloud service provider? See our 
 
 - [Single Container Setup](docs/deployment_guides/single_container.md): Useful as a quickstart to run the Toolkit, or deploy to AWS on an EC2 instance.
 - [AWS ECS Deployment](docs/deployment_guides/aws_ecs_single_container.md): Deploy the Toolkit single container to AWS ECS(Fargate).
-- [Google Cloud Platform](docs/deployment_guides/gcp_deployment.md): Help setup your Cloud SQL instance, then build, push and deploy backend+frontend containers to Cloud Run.
 
 ## Setup for Development
 
@@ -239,8 +226,6 @@ it will allow you to debug.
 
 A model deployment is a running version of one of the Cohere command models. The Toolkit currently supports the model deployments:
 
-- Cohere Platform (model_deployments/cohere_platform.py)
-  - This model deployment option call the Cohere Platform with the [Cohere python SDK](https://github.com/cohere-ai/cohere-python). You will need a Cohere API key. When you create an account with Cohere, we automatically create a trial API key for you. You can find it [here](https://dashboard.cohere.com/api-keys).
 - Azure (model_deployments/azure.py)
   - This model deployment calls into your Azure deployment. To get an Azure deployment [follow these steps](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-cohere-command). Once you have a model deployed you will need to get the endpoint URL and API key from the azure AI studio https://ai.azure.com/build/ -> Project -> Deployments -> Click your deployment -> You will see your URL and API Key. Note to use the Cohere SDK you need to add `/v1` to the end of the url.
 - SageMaker (model_deployments/sagemaker.py)
@@ -324,11 +309,5 @@ Currently, citations are not supported in lanchain multihop.
 
 1. Set env variables in UI
 2. Include citations for multi hop tools
-3. Display images for python interpreter tool
-4. Add a slack bot as an available interface
-5. White labelling: Changing fonts, logos, and colours.
 6. User management and authentication system: Toolkit is currently configured with one user role and no authentication.
 
-## Contributing
-
-Contributions are what drive an open source community, any contributions made are greatly appreciated. To get started, check out our [documentation.](CONTRIBUTING.md)

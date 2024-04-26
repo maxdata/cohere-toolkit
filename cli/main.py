@@ -30,39 +30,12 @@ class ToolName(StrEnum):
     TavilyInternetSearch = "Tavily Internet Search"
 
 
-WELCOME_MESSAGE = r"""
- █████╗  █████╗ ██╗  ██╗███████╗██████╗ ███████╗ ████████╗ █████╗  █████╗ ██╗     ██╗  ██╗██╗████████╗
-██╔══██╗██╔══██╗██║  ██║██╔════╝██╔══██╗██╔════╝ ╚══██╔══╝██╔══██╗██╔══██╗██║     ██║ ██╔╝██║╚══██╔══╝
-██║  ╚═╝██║  ██║███████║█████╗  ██████╔╝█████╗      ██║   ██║  ██║██║  ██║██║     █████═╝ ██║   ██║   
-██║  ██╗██║  ██║██╔══██║██╔══╝  ██╔══██╗██╔══╝      ██║   ██║  ██║██║  ██║██║     ██╔═██╗ ██║   ██║   
-╚█████╔╝╚█████╔╝██║  ██║███████╗██║  ██║███████╗    ██║   ╚█████╔╝╚█████╔╝███████╗██║ ╚██╗██║   ██║   
- ╚════╝  ╚════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝    ╚═╝    ╚════╝  ╚════╝ ╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   
-"""
 DATABASE_URL_DEFAULT = "postgresql+psycopg2://postgres:postgres@db:5432"
 PYTHON_INTERPRETER_URL_DEFAULT = "http://localhost:8080"
 NEXT_PUBLIC_API_HOSTNAME_DEFAULT = "http://localhost:8000"
 
 DOT_ENV_FILE_PATH = ".env"
 
-
-def print_styled(text: str, color: str = bcolors.ENDC):
-    print(color + text + bcolors.ENDC)
-
-
-def cohere_api_key_prompt(secrets):
-    key_exists = inquirer.confirm("Do you have a Cohere API key?")
-    if key_exists:
-        cohere_api_key = inquirer.text(
-            "Enter your Cohere API key", validate=lambda _, x: len(x) > 0
-        )
-    else:
-        print_styled(
-            "✋ Please visit the following link to get your Cohere API key: https://dashboard.cohere.com/api-keys 🔗",
-            bcolors.FAIL,
-        )
-        cohere_api_key = inquirer.text("Enter your Cohere API key")
-
-    secrets["COHERE_API_KEY"] = cohere_api_key
 
 
 def database_url_prompt(secrets):
@@ -246,8 +219,7 @@ DEPLOYMENTS = {
 
 
 def start():
-    secrets = {}
-    print_styled(WELCOME_MESSAGE, bcolors.OKGREEN)
+    secrets = {}    
     print_styled(
         "👋 First things first, let's set up your environment.", bcolors.MAGENTA
     )
