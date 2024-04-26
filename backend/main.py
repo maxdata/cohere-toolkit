@@ -43,15 +43,6 @@ def create_app():
 
 app = create_app()
 
-
-@app.get("/health")
-async def health():
-    """
-    Health check for backend APIs
-    """
-    return {"status": "OK"}
-
-
 # from alembic.command import upgrade
 # from alembic.config import Config
 @app.post("/migrate")

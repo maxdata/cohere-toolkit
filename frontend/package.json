@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 4000",
+    "dev": "next dev --port 3000",
     "build": "env-cmd -f ./.env.production next build",
     "lint": "next lint",
     "format": "prettier --check \"**/*.{js,json,ts,tsx,md}\"",
     "format:write": "prettier --write \"**/*.{js,json,ts,tsx,md}\"",
     "next:build": "next build",
     "start": "next start",
-    "start:single-docker": "next start --port 4000",
+    "start:single-docker": "next start --port 3000",
     "generate:client": "openapi --input http://0.0.0.0:8000/openapi.json --output ./src/cohere-client/generated --client axios --useOptions"
   },
   "dependencies": {
