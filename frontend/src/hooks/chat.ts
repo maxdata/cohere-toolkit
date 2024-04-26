@@ -20,7 +20,7 @@ import {
   isSessionUnavailableError,
   isStreamError,
 } from '@/cohere-client';
-import { DEPLOYMENT_COHERE_PLATFORM } from '@/constants';
+import { DEPLOYMENT_MGANIT_PLATFORM } from '@/constants';
 import { useRouteChange } from '@/hooks/route';
 import { StreamingChatParams, useStreamChat } from '@/hooks/streamChat';
 import { useCitationsStore, useConversationStore, useFilesStore, useParamsStore } from '@/stores';
@@ -324,7 +324,7 @@ export const useChat = (config?: { onSend?: (msg: string) => void }) => {
                 (e as CohereNetworkError)?.message ||
                 'Unable to generate a response since an error was encountered.';
 
-              if (error === 'network error' && deployment === DEPLOYMENT_COHERE_PLATFORM) {
+              if (error === 'network error' && deployment === DEPLOYMENT_MGANIT_PLATFORM) {
                 error += ' (Ensure a COHERE_API_KEY is configured in the .env file)';
               }
               setConversation({

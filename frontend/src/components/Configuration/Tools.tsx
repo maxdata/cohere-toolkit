@@ -5,7 +5,6 @@ import { Tool } from '@/cohere-client';
 import { FilesSection } from '@/components/Configuration/Files';
 import { ToolsInfoBox } from '@/components/Configuration/ToolsInfoBox';
 import { Checkbox, Switch, Text } from '@/components/Shared';
-import { WelcomeGuideTooltip } from '@/components/WelcomeGuideTooltip';
 import { useFilesInConversation } from '@/hooks/files';
 import { useListTools } from '@/hooks/tools';
 import { useConversationStore, useParamsStore } from '@/stores';
@@ -118,8 +117,7 @@ const ToolSection = () => {
             })}
           </div>
         </>
-      )}
-      <WelcomeGuideTooltip step={2} className="fixed right-0 mr-3 mt-12 md:right-full md:mt-0" />
+      )}      
     </section>
   );
 };

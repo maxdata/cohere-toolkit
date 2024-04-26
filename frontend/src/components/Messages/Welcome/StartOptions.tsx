@@ -34,12 +34,10 @@ export const StartOptions: React.FC<{
 
   const START_OPTIONS: Record<StartOptionKey, StartOption> = {
     [StartOptionKey.UNGROUNDED]: {
-      title: 'Chat only',
+      title: 'Chat',
       description: 'The model will respond without any sources and citations.',
       features: [
-        'Code generation: "Help me debug this code..."',
-        'Brainstorming: "10 startup name ideas"',
-        'Creative writing: "Email to my boss about time off"',
+        'Job description generation: "Help me generate job description..."',        
       ],
       params: {
         tools: [],
@@ -47,18 +45,20 @@ export const StartOptions: React.FC<{
       },
     },
     [StartOptionKey.WEB_SEARCH]: {
-      title: 'Chat with Wikipedia',
-      description:
-        'If required for response model will search wikipedia first to find a response. Uses default tool Langchain WikiRetriever.',
-      features: ['Topic learning: "How does photosynthesis work"'],
+      title: 'Candidate Discovery',
+      description: 'Search and retrieve candidate profiles based on specified criteria from a comprehensive database.',
+            features: [
+                'Query candidate resumes: "Show me top resumes for a project manager..."',
+                'Filter by skills and experience: "Find candidates with 5 years of experience in digital marketing..."'
+            ],
       params: {
         tools: [{ name: DEFAULT_CHAT_TOOL }],
       },
     },
     [StartOptionKey.DOCUMENTS]: {
-      title: 'Chat with documents',
-      description: 'Upload a PDF or TXT file for the model to search and cite in its response.',
-      features: ['Long document analysis and summarization'],
+      title: 'Find Jobs',
+      description: 'It will search jobs pool based on your query and return the top results.',
+      features: ['Find jobs: "Give me top jobs as a software engineer..."'],
       params: {},
       onChange: () => {
         setTimeout(() => focusComposer(), 100);
@@ -74,7 +74,7 @@ export const StartOptions: React.FC<{
 
   return (
     <div className="flex flex-col items-center gap-y-6">
-      <Text styleAs="h4">Choose an option to get started</Text>
+      {/* <Text styleAs="h4">Choose an option to get started</Text> */}
       <RadioGroup
         value={selectedOption}
         onChange={(key: StartOptionKey) => {
